@@ -19,6 +19,7 @@ function App() {
       dispatch(setDataProduct(resData))
     })()
   },[])
+  axios.defaults.withCredentials=true;
   const handleSubmit=(e)=>{
     e.preventDefault()
     axios.post('https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/')
