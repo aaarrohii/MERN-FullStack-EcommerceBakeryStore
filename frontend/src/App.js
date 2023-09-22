@@ -22,15 +22,29 @@ function App() {
 
   axios.defaults.withCredentials=true;
    const handleSubmit = async () => {
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_SERVER_DOMIN}/https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/`, {
+      try {
+        // Replace 'https://your-backend-url.com' with the actual URL of your backend API
+        const backendUrl = 'https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/';
 
-      });
-      console.log('Response from server:', response.data);
-    } catch (error) {
-      console.error('Error while making the POST request:', error);
-    }
-  };
+        // Define the data you want to send in the POST request
+        const requestData = {
+          // Include your request data here
+        };
+
+        // Make a POST request to the backend URL
+        const response = await axios.post(`${backendUrl}/`, requestData);
+
+        // Handle the response data
+        console.log('Response from server:', response.data);
+      } catch (error) {
+        // Handle any errors that occur during the request
+        console.error('Error while making the POST request:', error);
+      }
+    };
+
+    // Call the handleSubmit function when the component mounts or when you want to trigger the request
+    handleSubmit();
+  }, []);
     
 
   return (
