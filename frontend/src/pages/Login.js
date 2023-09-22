@@ -44,7 +44,7 @@ const Login = () => {
     if (email && password) {
       try {
         // Make a POST request to your backend URL
-        const response = await axios.post('https://mern-full-stack-ecommerce-bakery-store.vercel.app', data);
+        const response = await axios.post('https://mern-full-stack-ecommerce-bakery-store.vercel.app/login', data);
 
         // Check the response for success
         if (response.data.alert) {
