@@ -43,34 +43,40 @@ const Login = () => {
           };
       });
   };
-  const handleSubmit=async(e)=>{
-      e.preventDefault()
-      const {email,password}=data
-      if( email && password){
-        const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/login`,{
-            method : "POST",
-            headers : {
-              "content-type" : "application/json"
-            },
-            body : JSON.stringify(data)
-          })
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-          const dataRes = await fetchData.json()
-         
-          toast(dataRes.message)
+    const { email, password } = data;
+    if (email && password) {
+      try {
+        // Make a POST request to your backend URL
+        const response = await axios.post('https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/login', data);
 
-          if(dataRes.alert){
-            dispatch(loginRedux(dataRes))
-            setTimeout(()=>{
-                navigate("/")
-            },1000);
-            }  
-            console.log(userData)
-          }
-      else{
-        alert("Please enter required fields")
+        // Check the response for success
+        if (response.data.alert) {
+          // Dispatch the login Redux action
+          dispatch(loginRedux(response.data));
+
+          // Show a success toast message
+          toast.success(response.data.message);
+
+          // Redirect to the home page after successful login
+          setTimeout(() => {
+            navigate('/');
+          }, 1000);
+        } else {
+          // Show an error toast message if login fails
+          toast.error(response.data.message);
+        }
+      } catch (error) {
+        // Handle any errors that occur during the request
+        console.error('Login error:', error);
+        toast.error('Server error');
       }
+    } else {
+      alert('Please enter required fields');
     }
+  };
   return (
     
     <div className='p-3 md:p-4'>
@@ -79,7 +85,7 @@ const Login = () => {
         <div className='w-10 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto flex items-center'>
             <img src ={loginSignupImage} className='w-full'/>
         </div>
-        <form className="w-full py-3 flex flex-col"onSubmit={handleSubmit} >
+        <form className="w-full py-3 flex flex-col" onSubmit={handleSubmit} >
 
             <label htmlFor="Email" className='font-bold'>Email</label>
             <div className='flex px-2 py-1 bg-slate-200 rounded mt-1 mb-4 focus-within:outline focus-within:outline-purple-300'>
