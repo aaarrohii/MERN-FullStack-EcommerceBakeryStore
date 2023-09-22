@@ -22,7 +22,7 @@ function App() {
   axios.defaults.withCredentials=true;
   const handleSubmit=(e)=>{
     e.preventDefault()
-    axios.post('https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/')
+    axios.post('https://frostedbites-ecommerce-mern-fullstack-project.vercel.app')
     .then(result=>console.log(result))
     .catch(err=>console.log(err))
   }
