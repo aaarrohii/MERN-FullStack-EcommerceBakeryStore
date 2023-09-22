@@ -40,7 +40,7 @@ const Login = () => {
 
     if (email && password) {
       axios
-        .post('https://mern-full-stack-ecommerce-bakery-store.vercel.app/login', {
+        .post('https://mern-full-stack-ecommerce-bakery-store.vercel.app/', {
           email,
           password,
         })
