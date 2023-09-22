@@ -35,15 +35,7 @@ const Login = () => {
           };
       });
   };
-  const handleOnChange=(e)=>{
-      const {name,value}=e.target
-      setData((preve)=>{
-          return {
-              ...preve,
-              [name]: value
-          };
-      });
-  };
+
   axios.defaults.withCredentials=true;
   const handleSubmit = async (e) => {
     e.preventDefault();
