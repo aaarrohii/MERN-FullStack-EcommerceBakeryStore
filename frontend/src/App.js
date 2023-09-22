@@ -21,18 +21,16 @@ function App() {
   },[])
 
   axios.defaults.withCredentials=true;
-  const handleSubmit = async (e) => {
+   const handleSubmit = async () => {
     try {
-      
       const response = await axios.post(`${process.env.REACT_APP_SERVER_DOMIN}/https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/`, {
 
       });
+      console.log('Response from server:', response.data);
     } catch (error) {
       console.error('Error while making the POST request:', error);
     }
   };
-
-
     
 
   return (
