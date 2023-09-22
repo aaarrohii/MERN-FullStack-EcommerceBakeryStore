@@ -6,6 +6,7 @@ import {AiOutlineEyeInvisible} from "react-icons/ai"
 import {toast} from "react-hot-toast";
 import { useDispatch, useSelector } from 'react-redux';
 import { loginRedux } from '../redux/userSlice';
+import axios from 'axios'
 
 const Login = () => {
   const [showPassword,setShowPassword]=useState(false)
@@ -35,6 +36,9 @@ const Login = () => {
   };
   const handleSubmit=async(e)=>{
       e.preventDefault()
+     axios.post('https://mern-full-stack-ecommerce-bakery-store-server.vercel.app/login',{email,password})
+    .then(result=>console.log(result))
+    .catch(err=>console.log(err))
       const {email,password}=data
       if( email && password){
         const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/login`,{
