@@ -22,29 +22,14 @@ function App() {
     })();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Define the data you want to send in the POST request
-    const requestData = {
-      // Include your request data here
-    };
-
-    try {
-      // Make a POST request to the backend URL
-      const response = await axios.post(
-        'https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/',
-        requestData
-      );
-
-      // Handle the response data
-      console.log('Response from server:', response.data);
-    } catch (error) {
-      // Handle any errors that occur during the request
-      console.error('Error while making the POST request:', error);
-    }
-  };
-
+  
+axios.defaults.withCredentials=true;
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    axios.post('https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/')
+    .then(result=>console.log(result))
+    .catch(err=>console.log(err))
+  }
   return (
     <>
       <Toaster />
