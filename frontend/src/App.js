@@ -5,8 +5,6 @@ import toast, {Toaster} from "react-hot-toast";
 import { useEffect } from 'react';
 import { setDataProduct } from './redux/productSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios'
-
 
 function App() {
 
