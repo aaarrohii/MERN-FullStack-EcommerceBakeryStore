@@ -34,37 +34,36 @@ const Login = () => {
           };
       });
   };
-  const handleSubmit=async(e)=>{
-      e.preventDefault()
-     axios.post('https://mern-full-stack-ecommerce-bakery-store.vercel.app/login',{email,password})
-    .then(result=>console.log(result))
-    .catch(err=>console.log(err))
-      const {email,password}=data
-      if( email && password){
-        const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/login`,{
-            method : "POST",
-            headers : {
-              "content-type" : "application/json"
-            },
-            body : JSON.stringify(data)
-          })
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password } = data;
 
-          const dataRes = await fetchData.json()
-         
-          toast(dataRes.message)
+    if (email && password) {
+      axios
+        .post('https://mern-full-stack-ecommerce-bakery-store.vercel.app/login', {
+          email,
+          password,
+        })
+        .then((result) => {
+          console.log(result);
+          const dataRes = result.data; // Assuming your server sends back data in this format
+          toast(dataRes.message);
 
-          if(dataRes.alert){
-            dispatch(loginRedux(dataRes))
-            setTimeout(()=>{
-                navigate("/")
-            },1000);
-            }  
-            console.log(userData)
+          if (dataRes.alert) {
+            dispatch(loginRedux(dataRes));
+            setTimeout(() => {
+              navigate('/');
+            }, 1000);
           }
-      else{
-        alert("Please enter required fields")
-      }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast('An error occurred during login.');
+        });
+    } else {
+      toast('Please enter required fields');
     }
+  };
 
   return (
     
