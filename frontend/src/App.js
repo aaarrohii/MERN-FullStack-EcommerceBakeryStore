@@ -5,11 +5,20 @@ import toast, {Toaster} from "react-hot-toast";
 import { useEffect } from 'react';
 import { setDataProduct } from './redux/productSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios'
 
 function App() {
 
   const dispatch=useDispatch()
   const productData=useSelector((state)=>state.product)
+
+  axios.defaults.withCredentials=true;
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    axios.post('',(email,password))
+    .then(result=>console.log(result))
+    .catch(err=>console.log(err))
+  }
 
   useEffect(()=>{
     (async()=>{
