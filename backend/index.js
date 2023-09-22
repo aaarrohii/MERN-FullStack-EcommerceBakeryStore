@@ -5,7 +5,14 @@ const dotenv = require("dotenv").config();
 const Stripe=require("stripe")
 
 const app = express(); 
-app.use(cors()); 
+app.use(cors(
+  {
+    origin:["http://deploy-mern-1whq.vercel.app"],
+    methods:["POST","GET"],
+    credentials:true
+  }
+  ));
+  
 app.use(express.json({ limit: "10mb" }));
 
 const PORT = process.env.PORT || 8080;
@@ -21,7 +28,7 @@ const contactModel = mongoose.model("contact", contactSchema);
 console.log(process.env.MONGODB_URL);
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(process.env.MONGODB_URL)
+  .connect('mongodb+srv://aarohi:aarohi123@aarohistorefrostedbites.d2fb7ge.mongodb.net/aarohiFrostedBites?retryWrites=true&w=majority')
   .then(() => console.log("Connected to Database"))
   .catch((err) => {
     console.error("MongoDB connection error:", err);
