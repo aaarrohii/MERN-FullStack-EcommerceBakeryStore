@@ -5,6 +5,7 @@ import toast, {Toaster} from "react-hot-toast";
 import { useEffect } from 'react';
 import { setDataProduct } from './redux/productSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios'
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
   const handleSubmit = async (e) => {
     try {
       
-      const response = await axios.post(`${process.env.REACT_APP_SERVER_DOMIN}/https://mern-full-stack-ecommerce-bakery-store.vercel.app/`, {
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_DOMIN}/https://https://mern-full-stack-ecommerce-bakery-store.vercel.app/`, {
 
       });
     } catch (error) {
