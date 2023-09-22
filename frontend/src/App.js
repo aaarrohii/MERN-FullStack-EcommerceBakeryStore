@@ -24,7 +24,7 @@ function App() {
    const handleSubmit = async () => {
       try {
         // Replace 'https://your-backend-url.com' with the actual URL of your backend API
-        const backendUrl = 'https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/';
+        const backendUrl = 'https://mern-full-stack-ecommerce-bakery-store.vercel.app/';
 
         // Define the data you want to send in the POST request
         const requestData = {
@@ -32,7 +32,7 @@ function App() {
         };
 
         // Make a POST request to the backend URL
-        const response = await axios.post(`${backendUrl}/`, requestData);
+        const response = await axios.post(`${backendUrl}/login`, requestData);
 
         // Handle the response data
         console.log('Response from server:', response.data);
