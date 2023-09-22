@@ -20,7 +20,7 @@ function App() {
     })()
   },[])
 
-  axios,defaults.withCredentials=true;
+  axios.defaults.withCredentials=true;
   const handleSubmit = (e) =>{
     e.preventDefault()
     axios.post("https://mern-full-stack-ecommerce-bakery-store.vercel.app/login",{email,password})
