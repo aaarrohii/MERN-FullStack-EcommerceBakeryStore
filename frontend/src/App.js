@@ -20,6 +20,18 @@ function App() {
     })()
   },[])
 
+  axios.defaults.withCredentials=true;
+  const handleSubmit = async (e) => {
+    try {
+      
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_DOMIN}/https://mern-full-stack-ecommerce-bakery-store.vercel.app/`, {
+
+      });
+    } catch (error) {
+      console.error('Error while making the POST request:', error);
+    }
+  };
+
 
     
 
