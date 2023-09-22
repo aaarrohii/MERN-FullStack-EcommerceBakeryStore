@@ -7,7 +7,7 @@ const Stripe=require("stripe")
 const app = express(); 
 app.use(cors(
   {
-    origin:["https://frostedbites-byaarohi-ecommerce-mern-fullstack.vercel.app"],
+    origin:["https://frostedbites-mern-fullstack-bakerystore.vercel.app"],
     methods:["POST","GET"],
     credentials:true
   }
