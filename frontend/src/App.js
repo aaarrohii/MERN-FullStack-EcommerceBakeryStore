@@ -1,38 +1,60 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Header from "./component/Header";
-import { Outlet } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
-import { useEffect } from "react";
-import { setDataProduct } from "./redux/productSlide";
-import { useDispatch, useSelector } from "react-redux";
-import axios from 'axios'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDataProduct } from './redux/productSlice';
+import Header from './component/Header';
+import { Outlet } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+import axios from 'axios';
 
 function App() {
-  const dispatch = useDispatch()
-  const productData = useSelector((state)=>state.product)
- 
-  useEffect(()=>{
-    (async()=>{
-      const res = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/product`)
-      const resData = await res.json()
-      dispatch(setDataProduct(resData))
-    })()
-  },[])
-  axios.defaults.withCredentials=true;
-  const handleSubmit=(e)=>{
-    e.preventDefault()
-    axios.post('https://frostedbites-ecommerce-mern-fullstack-project.vercel.app')
-    .then(result=>console.log(result))
-    .catch(err=>console.log(err))
-  }
+  const dispatch = useDispatch();
+  const productData = useSelector((state) => state.product);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/product`);
+        const resData = await res.json();
+        dispatch(setDataProduct(resData));
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+      }
+    })();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Define the data you want to send in the POST request
+    const requestData = {
+      // Include your request data here
+    };
+
+    try {
+      // Make a POST request to the backend URL
+      const response = await axios.post(
+        'https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/',
+        requestData
+      );
+
+      // Handle the response data
+      console.log('Response from server:', response.data);
+    } catch (error) {
+      // Handle any errors that occur during the request
+      console.error('Error while making the POST request:', error);
+    }
+  };
 
   return (
     <>
       <Toaster />
       <div>
         <Header />
-        <main className="pt-16 bg-slate-100 min-h-[calc(100vh)]">
+        <main className='pt-20 bg-pink-100 min-h-[calc(100vh)]'>
+          <form onSubmit={handleSubmit}>
+            {/* Add your form fields here */}
+            <button type='submit'>Submit</button>
+          </form>
           <Outlet />
         </main>
       </div>
@@ -41,3 +63,12 @@ function App() {
 }
 
 export default App;
+In this code, I've added a handleSubmit function that is triggered when the form is submitted. You can add your form fields within the <form> element and customize the requestData object with the data you want to send in the POST request.
+
+Remember to replace 'https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/' with the actual URL of the endpoint you want to send the POST request to, and update the requestData object with the data you want to send.
+
+
+
+
+
+
