@@ -7,7 +7,7 @@ const Stripe=require("stripe")
 const app = express(); 
 app.use(cors(
   {
-    origin:["http://deploy-mern-1whq.vercel.app"],
+    origin:[""],
     methods:["POST","GET"],
     credentials:true
   }
