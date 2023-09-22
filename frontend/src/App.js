@@ -63,9 +63,7 @@ function App() {
 }
 
 export default App;
-In this code, I've added a handleSubmit function that is triggered when the form is submitted. You can add your form fields within the <form> element and customize the requestData object with the data you want to send in the POST request.
 
-Remember to replace 'https://frostedbites-ecommerce-mern-fullstack-project.vercel.app/' with the actual URL of the endpoint you want to send the POST request to, and update the requestData object with the data you want to send.
 
 
 
