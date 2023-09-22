@@ -36,7 +36,7 @@ const Login = () => {
   };
   const handleSubmit=async(e)=>{
       e.preventDefault()
-     axios.post('https://mern-full-stack-ecommerce-bakery-store-server.vercel.app/login',{email,password})
+     axios.post('https://mern-full-stack-ecommerce-bakery-store.vercel.app/')
     .then(result=>console.log(result))
     .catch(err=>console.log(err))
       const {email,password}=data
