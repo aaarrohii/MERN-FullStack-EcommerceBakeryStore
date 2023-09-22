@@ -15,7 +15,7 @@ function App() {
   axios.defaults.withCredentials=true;
   const handleSubmit=(e)=>{
     e.preventDefault();
-    axios.post('https://mern-full-stack-ecommerce-bakery-store-aarohi.vercel.app/login',{email,password})
+    axios.post('https://mern-full-stack-ecommerce-bakery-store-api.vercel.app//login',{email,password})
     .then(result=>console.log(result))
     .catch(err=>console.log(err))
   }
