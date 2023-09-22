@@ -46,7 +46,7 @@ const Login = () => {
         })
         .then((result) => {
           console.log(result);
-          const dataRes = result.data; // Assuming your server sends back data in this format
+          const dataRes = result.data; 
           toast(dataRes.message);
 
           if (dataRes.alert) {
