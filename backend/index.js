@@ -21,7 +21,7 @@ const contactModel = mongoose.model("contact", contactSchema);
 console.log(process.env.MONGODB_URL);
 mongoose.set("strictQuery", false);
 mongoose
-  .connect('mongodb+srv://aarohi:aarohi123@aarohistorefrostedbites.d2fb7ge.mongodb.net/aarohiFrostedBites?retryWrites=true&w=majority')
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log("Connected to Database"))
   .catch((err) => {
     console.error("MongoDB connection error:", err);
