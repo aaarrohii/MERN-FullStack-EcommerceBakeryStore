@@ -8,7 +8,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://frostedbites-mern-fullstack-ecommerce-bakery-store.vercel.app',
+    origin: '',
     methods: ['POST', 'GET'],
     credentials: true,
   })
