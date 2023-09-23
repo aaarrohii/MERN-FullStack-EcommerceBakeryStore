@@ -5,16 +5,7 @@ const dotenv = require("dotenv").config();
 const Stripe=require("stripe")
 
 const app = express(); 
-
-app.use(
-  cors({
-    origin: '',
-    methods: ['POST', 'GET'],
-    credentials: true,
-  })
-);
-
-  
+app.use(cors()); 
 app.use(express.json({ limit: "10mb" }));
 
 const PORT = process.env.PORT || 8080;
