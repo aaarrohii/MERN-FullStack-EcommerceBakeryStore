@@ -5,11 +5,13 @@ const dotenv = require("dotenv").config();
 const Stripe=require("stripe")
 
 const app = express(); 
-app.use(cors({
-  origin: ["https://frostedbites-mern-fullstack-ecommerce-bakery-store.vercel.app"],
-  methods: ["POST", "GET"],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: 'https://frostedbites-mern-fullstack-ecommerce-bakery-store.vercel.app',
+    methods: ['POST', 'GET'],
+    credentials: true,
+  })
+);
   
 app.use(express.json({ limit: "10mb" }));
 
