@@ -22,55 +22,63 @@ function App() {
   },[])
 
   axios.defaults.withCredentials = true;
-
   const [formData, setFormData] = useState({
-    // Initialize your form fields here
     name: '',
     price: 0,
-    // Add more fields as needed
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Make a POST request to your backend
+]
     axios
       .post(`${process.env.REACT_APP_SERVER_DOMIN}/product`, formData)
       .then((response) => {
-        // Handle the response from the backend here
         console.log('Response from backend:', response.data);
-        // You can update your Redux state or perform other actions as needed
 
-        // Show a success message or perform any other UI updates
-        toast.success('Product added successfully');
-
-        // Clear the form or perform any other necessary actions
+        toast.success('Product added successfully')
         setFormData({
           name: '',
-          price: 0,
-          // Clear other form fields here
+          price: 0,]
         });
       })
       .catch((error) => {
-        // Handle any errors here
         console.error('Error adding product:', error);
-        // Show an error message or perform other error handling as needed
         toast.error('Error adding product');
       });
   };
- 
-  return (
-  <>
-  <Toaster/>
-  <div>
-    <Header/>
-    <main className='pt-20 bg-pink-100 min-h-[calc(100vh)] '>
-      <Outlet/>
-      </main>
+   return (
+    <>
+      <Toaster />
+      <div>
+        <Header />
+        <main className='pt-20 bg-pink-100 min-h-[calc(100vh)] '>
+          {/* Your existing code */}
+          <Outlet />
+
+          {/* Example form */}
+          <form onSubmit={handleSubmit}>
+            <input
+              type='text'
+              placeholder='Product Name'
+              name='name'
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            />
+            <input
+              type='number'
+              placeholder='Product Price'
+              name='price'
+              value={formData.price}
+              onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+            />
+            <button type='submit'>Add Product</button>
+          </form>
+        </main>
       </div>
-      </>
-  )
+    </>
+  );
 }
+
 export default App;
 
 
