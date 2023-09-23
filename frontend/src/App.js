@@ -1,16 +1,17 @@
-import Header from './component/Header';
-import './App.css';
-import { Outlet } from 'react-router-dom';
-import toast, {Toaster} from "react-hot-toast";
-import { useEffect } from 'react';
-import { setDataProduct } from './redux/productSlice';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios'
+import { setDataProduct } from './redux/productSlice';
+import { Outlet } from 'react-router-dom';
+import Header from './component/Header';
+import toast, { Toaster } from 'react-hot-toast';
+import axios from 'axios';
 
 function App() {
+  const dispatch = useDispatch();
+  const productData = useSelector((state) => state.product);
 
-  const dispatch=useDispatch()
-  const productData=useSelector((state)=>state.product)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -28,25 +29,54 @@ function App() {
     })();
   }, [dispatch]);
 
-  
- 
+  axios.defaults.withCredentials = true;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_DOMIN}/login`,
+        { email, password }
+      );
+      console.log('Login successful:', response.data);
+
+      // Handle success, e.g., update user state or redirect to a new page
+    } catch (error) {
+      console.error('Login error:', error);
+      // Handle error, e.g., display an error message to the user
+    }
+  };
+
   return (
-  <>
-  <Toaster/>
-  <div>
-    <Header/>
-    <main className='pt-20 bg-pink-100 min-h-[calc(100vh)] '>
-      <Outlet/>
-      </main>
+    <>
+      <Toaster />
+      <div>
+        <Header />
+        <main className='pt-20 bg-pink-100 min-h-[calc(100vh)] '>
+          <form onSubmit={handleSubmit}>
+            <input
+              type='email'
+              placeholder='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type='submit'>Login</button>
+          </form>
+          <Outlet />
+        </main>
       </div>
-      </>
-  )
+    </>
+  );
 }
+
 export default App;
-
-
-
-
 
 
 
