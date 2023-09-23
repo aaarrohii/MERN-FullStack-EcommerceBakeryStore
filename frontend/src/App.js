@@ -35,7 +35,7 @@ function App() {
 
     // Make a POST request to your backend
     axios
-      .post(`${process.env.REACT_APP_SERVER_DOMAIN}/product`, formData)
+      .post(`${process.env.REACT_APP_SERVER_DOMIN}/product`, formData)
       .then((response) => {
         // Handle the response from the backend here
         console.log('Response from backend:', response.data);
