@@ -1,2 +1,4 @@
 # MERN-FullStack-EcommerceBakeryStore
+Developed and deployed a MERN full stack e-commerce project (MongoDB, Express.js, React, Node.js) which represents a state-of-the-art e-commerce solution engineered for high performance, scalability, and security. It includes web application framework, admin panel, serverlessarchitecture for shopping cart, payment methods using stripe, redux, dynamic rendering and client site routing, backend APIs, deployed using Render and Vercel etc
+
 FrostedBites By Aarohi is a delightful and delectable MERN (MongoDB, Express.js, React.js, Node.js) fullstack ecommerce store designed to bring the irresistible charm of a neighborhood bakery to the digital realm. This project encapsulates the essence of a bakery, offering a wide array of mouthwatering pastries, cakes, bread, and artisanal treats, all available at your fingertips.
