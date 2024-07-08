@@ -64,5 +64,5 @@ The project is deployed on Render for the backend and Vercel for the frontend:
 For any inquiries or feedback, please contact:
 
 - **Name**: Aarohi
-- **Email**: your-email@example.com
-- **GitHub**: [yourusername](https://github.com/yourusername)
+- **Email**: aarohig905@gmail.com
+- **GitHub**: [aaarrohii](https://github.com/aaarrohii)
